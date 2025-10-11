@@ -1,4 +1,4 @@
-cat > README.md <<'EOF'
+
 # DICOM / PACS Proof Kit
 
 This repository demonstrates a fully functional local Picture Archiving and Communication System (PACS) environment built using Orthanc (open-source PACS) and DCMTK command-line tools.  
