@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  orthanc:
+    image: jodogne/orthanc-plugins:latest
+    container_name: orthanc
+    ports:
+      - "8042:8042"     # HTTP / DICOMweb
+      - "4242:4242"     # DIMSE C-STORE/C-ECHO
+      - "10500:10500"   # MWL SCP
+    volumes:
+      - ./orthanc/orthanc.json:/etc/orthanc/orthanc.json:ro
+      - ./orthanc/worklists:/worklists
+
+  mirth:
+    image: nextgenhealthcare/connect:latest
+    container_name: mirth
+    ports:
+      - "8081:8080"     # Mirth admin UI
+      - "6661:6661"     # LLP listener (optional)
+
+  risapi:
+    build: ./ris-api
+    container_name: risapi
+    volumes:
+      - ./orthanc/worklists:/worklists
+    ports:
+      - "5000:5000"
+    depends_on:
+      - orthanc
