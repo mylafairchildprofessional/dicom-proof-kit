@@ -1,0 +1,13 @@
+{
+  "Name" : "ORTHANC",
+  "DicomPort" : 4242,
+  "HttpPort" : 8042,
+  "AuthenticationEnabled" : false,
+  "Plugins" : [ "modality-worklists", "dicom-web" ],
+  "Worklists" : {
+    "Enable" : true,
+    "Directory" : "/worklists",
+    "Port" : 10500
+  },
+  "DicomWeb" : { "Enable" : true }
+}
