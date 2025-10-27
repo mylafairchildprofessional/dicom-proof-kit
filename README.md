@@ -1,4 +1,5 @@
-# DICOM / PACS Proof Kit — Tutorial Sandbox
+
+# DICOM / PACS Proof Kit
 
 A tiny, local sandbox to practice **RIS → MWL → Modality → PACS** with Orthanc (PACS), a minimal RIS API, and DCMTK tools.
 
