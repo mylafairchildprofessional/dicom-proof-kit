@@ -131,9 +131,11 @@ sudo usermod -aG docker $USER && newgrp docker
 ```
 
 ### Clean up
+```
 docker compose down -v
 docker system prune -f
 rm -f demo_uncompressed.dcm
+```
 
 ### Why this exists
 This sandbox is designed for learners and job-seekers to get real, hands-on practice with DICOM, PACS, MWL, and healthcare interoperability — using only open-source tools and a laptop.
