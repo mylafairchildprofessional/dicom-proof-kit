@@ -55,7 +55,7 @@ curl -s -X POST http://localhost:5000/orders \
   -H 'Content-Type: application/json' \
   -d '{"patient_id":"P123","patient_name":"DOE^JANE","accession":"ACC-1001","modality":"CR","study_desc":"XR CHEST"}'
 ```
-#See the MWL file appear:
+## See the MWL file appear:
 ```ls -l orthanc/worklists/```
 
 ### Query the MWL (modality side)
@@ -93,8 +93,7 @@ When you send a simple JSON order, it writes an MWL JSON into orthanc/worklists/
 - You can explore the study in Orthanc Explorer at 8042, or via DICOMweb.
 
 ### Repo layout
-graphql
-Copy code
+```
 .
 ├─ docker-compose.yml                  # orchestrates services
 ├─ orthanc/
@@ -106,6 +105,7 @@ Copy code
 │  └─ app.py                           # POST /orders -> <accession>.json
 └─ demo-scripts/
    └─ 03_make_dicom.py                 # creates demo_uncompressed.dcm
+```
 
 ### Troubleshooting
 echoscu connection refused
@@ -113,15 +113,22 @@ Orthanc not up yet. Start just Orthanc and check logs:
 docker compose up -d orthanc
 docker logs --tail=50 orthanc
 
-### MWL query aborts
+**MWL query aborts**
+```
 Use findscu -W (Worklist model), not -S.
+```
 
-### Store fails with JPEG conversion error
+**Store fails with JPEG conversion error**
+```
 Send uncompressed DICOM (the provided script does).
+```
 
-### Permission denied: /run/docker.sock
+**Permission denied: /run/docker.sock**
+
 Add your user to the docker group, then refresh your shell:
+```
 sudo usermod -aG docker $USER && newgrp docker
+```
 
 ### Clean up
 docker compose down -v
